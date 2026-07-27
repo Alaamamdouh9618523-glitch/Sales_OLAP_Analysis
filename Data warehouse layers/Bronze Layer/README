@@ -1,1 +1,85 @@
+# Data Warehouse Layers
 
+## Overview
+
+This folder contains all SQL scripts used to build the Data Warehouse layers.
+
+---
+
+# Completed Work ✅
+
+### 01_Create_Database.sql
+
+This script creates:
+
+- SalesDW database
+- Bronze schema
+- Silver schema
+- Gold schema
+
+---
+
+### 02_Create_Bronze.sql
+
+This script creates all Bronze tables.
+
+### Notes
+
+- All columns are created as `NVARCHAR(MAX)`.
+- No Primary Keys.
+- No Foreign Keys.
+
+This is intentional because Bronze stores raw data exactly as received from the source.
+
+---
+
+### 03_Load_Bronze.sql
+
+Loads all CSV files into Bronze tables using `BULK INSERT`.
+
+Dataset path used:
+
+D:\Sales_OLAP_Analysis\datasets\
+
+Expected row counts after execution:
+
+| Table | Rows |
+|--------|-----:|
+| brands | 9 |
+| categories | 7 |
+| customers | 1445 |
+| products | 334 |
+| stores | 3 |
+| staffs | 10 |
+| stocks | 939 |
+| orders | 1615 |
+| order_items | 4764 |
+
+---
+
+# Next Step (Silver Layer)
+
+The next developer should create:
+
+- 04_Create_Silver.sql
+- 05_ETL_Bronze_to_Silver.sql
+
+### Silver Layer Requirements
+
+- Create proper data types.
+- Add Primary Keys.
+- Clean and transform data.
+- Convert data from Bronze to Silver.
+- Do NOT modify Bronze tables.
+
+---
+
+# Execution Order
+
+1. 01_Create_Database.sql
+2. 02_Create_Bronze.sql
+3. 03_Load_Bronze.sql
+4. 04_Create_Silver.sql
+5. 05_ETL_Bronze_to_Silver.sql
+6. 06_Create_Gold.sql
+7. 07_ETL_Silver_to_Gold.sql
